@@ -1,0 +1,198 @@
+baseURL = "https://example.com/"  # 【重要】部署后替换为你的 Vercel 域名或自定义域名
+languageCode = "zh-cn"            # 网站语言，例如 en-us, zh-cn
+title = "我的技术博客"              # 【修改】你的网站标题
+theme = "PaperMod"                # 指定使用 PaperMod 主题
+
+# ------------------------------------------------------------------------------------
+# Hugo 内建设置
+# ------------------------------------------------------------------------------------
+enableRobotsTXT = true # 生成 robots.txt 文件，告诉搜索引擎哪些可以爬取
+buildDrafts = false    # 是否构建草稿，部署时通常为 false
+buildFuture = false    # 是否构建设定了未来日期的文章
+buildExpired = false   # 是否构建已过期的文章
+
+# 分页设置
+[pagination]
+  pagerSize = 10
+
+# Markdown 渲染配置
+[markup]
+  [markup.highlight]
+    # noClasses = false # true 则不使用 CSS classes 进行代码高亮, false 则使用
+    codeFences = true # 启用代码块高亮
+    guessSyntax = true
+    lineNos = true # 显示行号
+    style = "dracula" # 代码高亮主题, 更多主题: https://xyproto.github.io/splash/docs/all.html
+  [markup.goldmark.renderer]
+    unsafe = true # 允许 HTML 原生代码，如果你的文章中需要插入 HTML 标签则设为 true
+
+# 输出格式
+[outputs]
+  home = ["HTML", "JSON"]  # 移除 RSS
+  section = ["HTML"]       # 移除 RSS
+  taxonomy = ["HTML"]      # 移除 RSS
+  term = ["HTML"]         # 移除 RSS
+
+# 压缩输出
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+# ------------------------------------------------------------------------------------
+# PaperMod 主题参数 [params]
+# 更多参数请参考 PaperMod 主题的 exampleSite/config.toml 或官方文档
+# https://github.com/adityatelange/hugo-PaperMod/wiki/Variables
+# ------------------------------------------------------------------------------------
+[params]
+  env = "production"
+  title = "我的技术博客"
+  description = "这是我的个人博客，使用 Hugo 和 PaperMod 搭建，记录学习与思考。"
+  keywords = ["Blog", "Hugo", "PaperMod", "技术", "学习"]
+  author = "HY"
+  DateFormat = "2006年01月02日 15:04"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  # 基本设置
+  [params.assets]
+    disableFingerprinting = true
+    favicon = "favicon.ico"
+
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = false
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  showtoc = false
+  tocopen = false
+
+  # 自定义显示文本
+  readingTime = "需要 {{ .Count }} 分钟"    # 阅读时间显示格式
+  wordCount = "{{ .Count }} 字"          # 字数显示格式
+  lastmod = "更新于"                     # 最后修改时间文本
+  draft = "草稿"                        # 草稿标记文本
+  edit = "编辑"                         # 编辑按钮文本
+  readMore = "阅读全文"                  # 阅读更多按钮文本
+  readNext = "接下来阅读"                # 下一篇文章提示
+  previous = "上一页"                    # 上一页按钮文本
+  next = "下一页"                       # 下一页按钮文本
+  minute = "分钟"                       # 替换 min 显示
+  post = "文章"                        # 文章显示
+  posts = "篇文章"                      # 文章复数显示
+  
+  # 归档页面配置
+  [params.archives]
+    dateFormat = "2006年01月"           # 归档页面日期格式
+    title = "归档"                      # 归档页面标题
+
+  [params.label]
+    text = "首页"
+
+  [params.profileMode]
+    enabled = false
+
+  # 搜索配置
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+  # 自定义月份显示
+  [params.months]
+    1 = "一月"
+    2 = "二月"
+    3 = "三月"
+    4 = "四月"
+    5 = "五月"
+    6 = "六月"
+    7 = "七月"
+    8 = "八月"
+    9 = "九月"
+    10 = "十月"
+    11 = "十一月"
+    12 = "十二月"
+
+  # 代码复制按钮文本
+  copyText = "复制"
+  copiedText = "已复制！"
+
+# ------------------------------------------------------------------------------------
+# 导航菜单 [menu]
+# ------------------------------------------------------------------------------------
+[menu]
+  [[menu.main]] # "main" 是主菜单
+    identifier = "posts"
+    name = "📚 文章" # 菜单显示名称
+    url = "/posts/"    # 链接地址
+    weight = 10        # 排序权重，越小越靠前
+  [[menu.main]]
+    identifier = "tags"
+    name = "🏷️ 标签"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "archives"
+    name = "🗄️ 归档"
+    url = "/archives/" # PaperMod 自动生成归档页
+    weight = 30
+  [[menu.main]]
+    identifier = "search"
+    name = "🔍 搜索"
+    url = "/search/"   # PaperMod 内建搜索页，需要在 front matter 中创建 search.md 页面
+    weight = 40
+
+  # [[menu.main]]
+  #   name = "GitHub"
+  #   url = "https://github.com/yourusername" # 【修改】
+  #   weight = 60
+  #   [menu.main.params] # 如果需要用 Feather 图标
+  #     icon = "github"
+  #     newTab = true # 在新标签页打开
+
+# ------------------------------------------------------------------------------------
+# 分类法 (Taxonomies)
+# ------------------------------------------------------------------------------------
+[taxonomies]
+  category = "分类"
+  tag = "标签"
+  series = "系列"
+
+# ------------------------------------------------------------------------------------
+# Hugo 内建服务 (可选，例如 Google Analytics)
+# ------------------------------------------------------------------------------------
+# [services]
+#   [services.googleAnalytics]
+#     ID = "G-XXXXXXXXXX" # 【修改】你的 Google Analytics Measurement ID
+
+# 语言设置
+[languages]
+  [languages.zh]
+    languageName = "中文"
+    weight = 1
+    title = "我的技术博客"
+    taxonomies.category = "分类"
+    taxonomies.tag = "标签"
+    taxonomies.series = "系列"
+
+    [languages.zh.params]
+      ReadMore = "阅读全文"
+      DateFormat = "2006年01月02日"
+      MonthFormat = "2006年01月"
+      listDateFormat = "01-02"
+      singleDateFormat = "2006年01月02日 15:04"
+      archiveDateFormat = "01-02"
+      archiveMonthFormat = "2006年01月"
+      archiveYearFormat = "2006年"
+      readingTime = "阅读时间"
+      minuteText = "分钟"
+      wordText = "字"
