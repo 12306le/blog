@@ -1,4 +1,4 @@
-baseURL = "/"  # Vercel 部署使用根路径
+baseURL = "https://blog-git-master-huanyus-projects-33ead40a.vercel.app"  # Vercel 部署使用根路径
 languageCode = "zh-cn"            # 网站语言，例如 en-us, zh-cn
 title = "我的技术博客"              # 【修改】你的网站标题
 theme = "PaperMod"                # 指定使用 PaperMod 主题
