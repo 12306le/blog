@@ -174,7 +174,7 @@ aside:
   enable: true
   hide: false
   button: true
-  mobile: true
+  mobile: false
   position: right
   display:
     archive: true
@@ -437,4 +437,16 @@ CDN:
   version: true
   custom_format:
   option:
+
+# --------------------------------------
+# 自定义注入 (移动端优化 CSS)
+# --------------------------------------
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
+    - <meta name="format-detection" content="telephone=no, email=no, address=no">
+    - <meta name="mobile-web-app-capable" content="yes">
+    - <meta name="apple-mobile-web-app-capable" content="yes">
+    - <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  bottom:
 

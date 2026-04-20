@@ -1,0 +1,232 @@
+// ===========================================
+// 博客自定义样式 - 移动端优化 (v1)
+// ===========================================
+
+// ---------- 全局细节 ----------
+
+// 滚动条尺寸适中,避免移动端 overlay 太粗
+html
+  scroll-behavior smooth
+
+// 图片响应式兜底
+img
+  max-width 100%
+  height auto
+
+// 表格兼容移动端(横向滚动)
+.article-container
+  table
+    display block
+    overflow-x auto
+    -webkit-overflow-scrolling touch
+    white-space nowrap
+    max-width 100%
+
+// 代码块横向滚动更流畅
+figure.highlight, pre
+  -webkit-overflow-scrolling touch
+
+
+// ===========================================
+// 移动端 (≤768px) 专项优化
+// ===========================================
+@media screen and (max-width: 768px)
+
+  // ---------- 导航栏 ----------
+  #page-header.nav-fixed > #nav,
+  #nav
+    padding 0 .5rem !important
+
+  // 站点标题在小屏避免换行
+  #site-name
+    font-size 1rem !important
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+
+  // 汉堡菜单触摸目标放大
+  #toggle-menu
+    padding 0 .5rem
+    a
+      font-size 1.2rem
+
+  // ---------- 首页文章卡片 ----------
+  #recent-posts > .recent-post-item
+    margin 12px 0 !important
+    border-radius 12px !important
+
+    // 缩图在手机上不要太挤
+    > .post_cover
+      padding 10px 0 10px 10px
+
+    > .recent-post-info
+      padding 14px 14px 14px 10px
+
+      > .article-title
+        font-size 1.15rem
+        line-height 1.35
+        margin-bottom 6px
+
+      > .article-meta-wrap
+        font-size 12px
+
+      > .content
+        font-size 13.5px
+        line-height 1.7
+        -webkit-line-clamp 3
+
+  // ---------- 文章正文 ----------
+  #article-container
+    font-size 15px
+    line-height 1.85
+    word-break break-word
+
+    h1
+      font-size 1.45rem
+      margin 1.2em 0 .6em
+    h2
+      font-size 1.3rem
+      margin 1.1em 0 .55em
+    h3
+      font-size 1.15rem
+      margin 1em 0 .5em
+    h4
+      font-size 1.05rem
+    h5, h6
+      font-size 1rem
+
+    p
+      margin .75em 0
+      letter-spacing .2px
+
+    blockquote
+      padding 8px 12px
+      font-size 14.5px
+
+    // 内联代码
+    code
+      font-size 13px
+      padding 1px 5px
+      word-break break-word
+
+    // 代码块:字号缩小 + 圆角
+    figure.highlight,
+    pre
+      font-size 13px
+      line-height 1.6
+      margin 1em -4px
+      border-radius 10px
+
+      .code-container
+        font-size 13px
+
+    // 有序/无序列表缩进
+    ul, ol
+      padding-left 1.4em
+      li
+        margin .3em 0
+
+    // 图片圆角
+    img
+      border-radius 8px
+
+  // 文章页 meta 更紧凑
+  #post-meta, .post-meta
+    font-size 12.5px
+
+  // ---------- 文章容器边距 ----------
+  .layout
+    padding 0 !important
+
+  #content-inner
+    margin 0 !important
+    padding 8px !important
+
+  #post > .post-info
+    padding 0 12px
+
+  #post
+    padding 10px 14px !important
+
+  // ---------- 侧边栏 ----------
+  // 抽屉式侧边栏宽度控制,避免部分安卓浏览器溢出
+  #aside-content
+    width 80vw !important
+    max-width 320px
+
+  .card-widget
+    padding 14px !important
+    margin-bottom 12px !important
+
+    .item-headline
+      font-size 14px
+
+  // ---------- 分页 ----------
+  #pagination
+    margin 10px 0
+
+    .page-number, .next_page, .prev_page
+      font-size 14px
+      padding 6px 10px
+
+  // ---------- 右下角悬浮按钮 ----------
+  #rightside
+    bottom 40px !important
+
+    #rightside-config-hide, #rightside-config-show
+      button
+        width 36px
+        height 36px
+        line-height 36px
+
+  // ---------- 页脚 ----------
+  #footer
+    padding 18px 14px !important
+
+    #footer-wrap
+      font-size 12.5px
+      line-height 1.8
+
+  // ---------- TOC 目录 (手机上铺满) ----------
+  #card-toc
+    width 100% !important
+
+  // ---------- 归档/分类/标签页 ----------
+  .article-sort-item-title
+    font-size 1.05rem
+  .article-sort-item-time
+    font-size 12px
+
+  // 标签云字号更克制
+  .tag-cloud-list > a
+    font-size 14px !important
+    padding 2px 6px
+
+  // ---------- 404 ----------
+  .error-content
+    padding 0 20px
+    .error-title
+      font-size 4rem
+
+
+// ===========================================
+// 超小屏 (≤375px) 再压一档
+// ===========================================
+@media screen and (max-width: 375px)
+  #article-container
+    font-size 14.5px
+    h1
+      font-size 1.35rem
+    h2
+      font-size 1.2rem
+
+  #recent-posts > .recent-post-item > .recent-post-info > .article-title
+    font-size 1.05rem
+
+
+// ===========================================
+// 触摸设备:去掉 hover 时的闪烁
+// ===========================================
+@media (hover: none)
+  a, button
+    -webkit-tap-highlight-color rgba(0,0,0,0)
